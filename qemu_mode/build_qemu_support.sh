@@ -139,6 +139,7 @@ patch -p1 <../patches/cpu-exec.diff || exit 1
 patch -p1 <../patches/syscall.diff || exit 1
 patch -p1 <../patches/configure.diff || exit 1
 patch -p1 <../patches/memfd.diff || exit 1
+patch -p1 <../patches/gettid_fix.diff || exit 1
 
 echo "[+] Patching done."
 
@@ -147,7 +148,7 @@ echo "[+] Patching done."
 
 CFLAGS="-O3 -ggdb" ./configure --disable-system \
   --enable-linux-user --disable-gtk --disable-sdl --disable-vnc \
-  --target-list="${CPU_TARGET}-linux-user" --enable-pie --enable-kvm || exit 1
+  --target-list="${CPU_TARGET}-linux-user" --enable-pie --enable-kvm --python=/usr/bin/python2 || exit 1
 
 echo "[+] Configuration complete."
 
